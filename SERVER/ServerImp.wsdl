@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<definitions name="ServerImp" targetNamespace="urn:ServerImp" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:ServerImp" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+<portType name="ServerImpPort"><operation name="returnData">
+<input message="tns:returnDataRequest" />
+<output message="tns:returnDataResponse" />
+</operation>
+</portType>
+<binding name="ServerImpBinding" type="tns:ServerImpPort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="returnData">
+<soap:operation soapAction="urn:ServerImp#ServerImp#returnData" />
+<input><soap:body use="encoded" namespace="urn:ServerImp" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:ServerImp" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="ServerImp">
+<documentation />
+<port name="ServerImpPort" binding="tns:ServerImpBinding"><soap:address location="http://127.0.0.1:80/demo/SERVER/Server.php" />
+</port>
+</service>
+<message name="returnDataRequest">
+<part name="xml" type="xsd:string" />
+</message>
+<message name="returnDataResponse">
+<part name="returnData" type="xsd:string" />
+</message>
+</definitions>
